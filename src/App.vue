@@ -1,30 +1,45 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view />
+  <FooterPlay></FooterPlay>
 </template>
 
+<script>
+import FooterPlay from "./components/FooterPlay.vue";
+export default {
+  setup() {},
+  components: {
+    FooterPlay,
+  },
+};
+</script>
+
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.icon {
+  width: 0.6rem;
+  height: 0.6rem;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+li {
+  list-style: none;
+}
+body {
+  background-color: #f8f9fd;
+  height: 100%;
+}
+a {
+  color: black;
 }
 </style>
