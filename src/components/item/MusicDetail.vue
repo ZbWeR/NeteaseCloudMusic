@@ -22,7 +22,7 @@
       <img
         class="needle"
         :class="isPlaying ? 'needle_active' : ''"
-        src="@\assets\needle-ab.png"
+        src="@\assets\needle.png"
         alt=""
       />
       <img class="cd_border" src="@\assets\cd.png" alt="" />
