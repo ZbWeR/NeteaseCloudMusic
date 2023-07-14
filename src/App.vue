@@ -1,16 +1,13 @@
 <template>
   <router-view />
-  <FooterPlay></FooterPlay>
+  <FooterPlay v-show="showFooterMusic"></FooterPlay>
 </template>
 
-<script>
+<script setup>
 import FooterPlay from "./components/FooterPlay.vue";
-export default {
-  setup() {},
-  components: {
-    FooterPlay,
-  },
-};
+import { useMapState } from "./utils/useVuex";
+
+const { showFooterMusic } = useMapState(["showFooterMusic"]);
 </script>
 
 <style lang="less">

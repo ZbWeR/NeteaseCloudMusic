@@ -4,8 +4,10 @@
       <use xlink:href="#icon-caidan"></use>
     </svg>
     <div class="top-title">
-      <span class="active">我的</span>
-      <span>发现</span>
+      <router-link :to="{ path: 'userInfo' }">
+        <span>我的</span>
+      </router-link>
+      <span class="active">发现</span>
       <span>云村</span>
       <span>视频</span>
     </div>
@@ -17,8 +19,7 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
 </script>
 
 <style lang="less">

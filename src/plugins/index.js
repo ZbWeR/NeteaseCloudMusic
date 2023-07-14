@@ -7,7 +7,6 @@ let vantComponents = [
     Button,
     Sticky,
     Popup,
-
 ]
 
 export default function getVant(app) {
