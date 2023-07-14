@@ -34,6 +34,8 @@ export default createStore({
     lyricText: "[00:00.00] 作词 : JOHN\n[00:01.00] 作曲 : JOHN\n[00:02.00] 编曲 : JOHN\n[99:00.00]纯音乐，请欣赏\n",
     // 歌曲已播放时间
     currentTime: 0,
+    loginState: false,
+    showFooterMusic: true,
   },
   getters: {
   },
@@ -44,6 +46,8 @@ export default createStore({
     updateDetailShow: (state) => state.detailShow = !state.detailShow,
     updateLyricText: (state, value) => state.lyricText = value,
     updateCurrentTime: (state, value) => state.currentTime = value,
+    updateLoginState: (state, value) => { state.loginState = value; console.log(233); },
+    updateShowFooterMusic: (state, value) => state.showFooterMusic = value,
   },
   actions: {
     getLyric: async (context, value) => {
