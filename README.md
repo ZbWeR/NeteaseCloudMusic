@@ -35,3 +35,5 @@
 1. [【前端实战项目】手把手教你从零开始做一个网易云音乐](https://www.bilibili.com/video/BV1c44y1g7ac/?spm_id_from=333.337.search-card.all.click&vd_source=078d08e0de4b58aacb1aef1949540066)
 
 2. [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
+
+3. [CloudFlare一键部署,国内访问](https://www.cloudflare.com/zh-cn/)
