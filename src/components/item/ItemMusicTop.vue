@@ -37,9 +37,9 @@
         <img :src="itemMusic.coverImgUrl" />
         <div class="itemText">
           <h1>{{ itemMusic.name }}</h1>
-          <div class="creator" v-if="itemMusic.creator !== undefined">
-            <img :src="itemMusic.creator.avatarUrl" class="avatar" />
-            <p>{{ itemMusic.creator.nickname }}</p>
+          <div class="creator">
+            <img :src="itemMusic?.creator?.avatarUrl" class="avatar" />
+            <p>{{ itemMusic?.creator?.nickname }}</p>
             <svg class="icon" aria-hidden="true">
               <use href="#icon-youjiantou"></use>
             </svg>

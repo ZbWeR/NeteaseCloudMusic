@@ -55,7 +55,7 @@ const { updateIsPlaying, updateDetailShow, updateCurrentTime } =
   useMapMutations(["updateIsPlaying", "updateDetailShow", "updateCurrentTime"]);
 const { getLyric } = useMapActions(["getLyric"]);
 const audio = ref(null);
-let duration = ref(232.280816); // 给个初始值
+let duration = ref(5940); // 给个初始值
 let interval = null;
 
 function getSubInfo(item) {

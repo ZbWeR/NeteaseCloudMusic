@@ -101,7 +101,6 @@ export default {
       async (newVal) => {
         let res = await getTracksList(newVal);
         state.tracks = [...state.tracks, ...res.data.songs];
-        state.tracks = state.tracks.map((item, index) => ({ ...item, index }));
       }
     );
 
@@ -125,22 +124,12 @@ export default {
       updatePlayList(state.tracks);
       updatePlayingIndex(i);
     };
-    // 试图进行抖动防抖,已废弃
-    // function debounce(func, delay) {
-    //   let timeoutId;
-    //   return function (...args) {
-    //     clearTimeout(timeoutId);
-    //     timeoutId = setTimeout(() => {
-    //       func.apply(this, args);
-    //     }, delay);
-    //   };
-    // }
     const handleScroll = (e) => {
+      state.scrollTop = e.target.scrollTop;
       state.start = Math.min(
         Math.floor(state.scrollTop / itemHeight),
         state.trackCount - 8 - 5
       );
-      state.scrollTop = e.target.scrollTop;
       listRef.value.style.top = `${
         (state.start > 4 ? state.start - 4 : 0) * itemHeight
       }px`;
