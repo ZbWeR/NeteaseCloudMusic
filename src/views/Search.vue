@@ -34,7 +34,7 @@
   <div class="searchHistory" v-if="state.dataState === 0">
     <div class="header">
       <h1>搜索历史</h1>
-      <svg class="icon" aria-hidden="true" @click="clearHistroy">
+      <svg class="icon" aria-hidden="true" @click="clearHistory">
         <use xlink:href="#icon-shanchu"></use>
       </svg>
     </div>
@@ -122,16 +122,16 @@ const { updatePlayingIndex, updatePlayList } = useMapMutations([
   "updatePlayList",
 ]);
 let tmpKeyWords = "";
-let isloading = false;
+let isLoading = false;
 
 onMounted(async () => {
   // 获取默认搜索关键词
   let res = await getDefaultWords();
   state.defaultWords = res.data.data.showKeyword;
   // 从本地存储中获取搜索记录
-  let localHistroyList = localStorage.getItem("historyList");
-  if (localHistroyList !== null) {
-    state.historyList = JSON.parse(localHistroyList);
+  let localHistoryList = localStorage.getItem("historyList");
+  if (localHistoryList !== null) {
+    state.historyList = JSON.parse(localHistoryList);
   }
   // 监听滚动事件
   window.addEventListener("scroll", loadMoreDebounce);
@@ -179,7 +179,7 @@ function clearSearchResult() {
 }
 
 // 清空搜索历史
-const clearHistroy = () => {
+const clearHistory = () => {
   state.historyList = [];
   localStorage.removeItem("historyList");
 };
@@ -193,8 +193,8 @@ function getSubInfo(item) {
 // 高亮搜索关键词
 function highLight(str) {
   let keyWord = tmpKeyWords;
-  let regx = new RegExp(keyWord, "gi");
-  return str.replace(regx, `<span class="highlight">${keyWord}</span>`);
+  let regex = new RegExp(keyWord, "gi");
+  return str.replace(regex, `<span class="highlight">${keyWord}</span>`);
 }
 // 根据历史记录搜索
 function searchFromHistory(str) {
@@ -235,9 +235,9 @@ function hasReachedEnd() {
 
 // 加载更多
 async function loadMore() {
-  if (!hasReachedEnd() || isloading || state.nowPageIndex == state.maxPages)
+  if (!hasReachedEnd() || isLoading || state.nowPageIndex == state.maxPages)
     return;
-  isloading = true;
+  isLoading = true;
   let { inputKeyWords, perNum } = state;
   console.log(state.nowPageIndex, state.maxPages);
   state.nowPageIndex += 1;
@@ -251,7 +251,7 @@ async function loadMore() {
   if (code !== 200 || result.songs === undefined)
     state.nowPageIndex = state.maxPages;
   else state.searchResult = [...state.searchResult, ...result.songs];
-  isloading = false;
+  isLoading = false;
 }
 const loadMoreDebounce = debounce(loadMore, 100);
 </script>
