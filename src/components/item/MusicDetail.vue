@@ -74,15 +74,15 @@
       <div class="progressBox">
         <div
           class="progress_line"
-          :style="{ width: `${(currentTime * 100) / srcTime}%` }"
+          :style="{ width: `${(currentTime * 100) / duration}%` }"
         ></div>
         <div
           class="progress_point"
-          :style="{ left: `${(currentTime * 100) / srcTime}%` }"
+          :style="{ left: `${(currentTime * 100) / duration}%` }"
         ></div>
       </div>
       <div class="progressTime">
-        {{ formatTime(srcTime) }}
+        {{ formatTime(duration) }}
       </div>
     </div>
 
@@ -116,10 +116,11 @@ const isStatic = ref(true);
 const showLyric = ref(false);
 
 const props = defineProps(["musicInfo", "togglePlay", "lyricText", "srcTime"]);
-const { isPlaying, currentTime, playingIndex } = useMapState([
+const { isPlaying, currentTime, playingIndex, musicPlayList } = useMapState([
   "isPlaying",
   "currentTime",
   "playingIndex",
+  "musicPlayList",
 ]);
 const { updateDetailShow, updatePlayingIndex } = useMapMutations([
   "updateDetailShow",
@@ -130,6 +131,11 @@ onMounted(() => {
   if (checkOverflow(musicName.value)) {
     isStatic.value = false;
   }
+});
+
+const duration = computed(() => {
+  if (isNaN(props.srcTime)) return 5940;
+  return props.srcTime;
 });
 
 // 渲染歌词
@@ -175,7 +181,10 @@ function getSubInfo(item) {
 }
 
 function changeIndex(val) {
-  updatePlayingIndex(playingIndex.value + val);
+  let afterIndex = playingIndex.value + val;
+  let maxIndex = musicPlayList.value.length;
+  afterIndex = (afterIndex + maxIndex) % maxIndex;
+  updatePlayingIndex(afterIndex);
 }
 
 // 监听时间变化让歌词滚动
