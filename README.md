@@ -7,6 +7,8 @@
 
 技术栈： Vue | Vuex | Vue-Router
 
+[云音乐项目笔记✏️](https://uestc.feishu.cn/docx/VMMcdQVyKovuX0xCgsocu0l5nlh)
+
 ## ✨实现功能
 
 - [x] 首页: :carousel_horse: 轮播图 / :musical_score: 歌单推荐 / :arrow_down: 底部播放组件
